@@ -12,7 +12,7 @@ $ source env/bin/activate
 $ pip3 install -r requirements.txt
 
 # Create DB
-'NAME': 'ecomm',
+'NAME': 'weather',
 'USER': 'postgres',
 'PASSWORD': 'gauravgaurav',
 'HOST': 'localhost',
