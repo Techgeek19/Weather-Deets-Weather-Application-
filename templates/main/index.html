@@ -1,0 +1,1950 @@
+{% extends 'main/base.html' %}
+
+{% block body %}
+<!-- <div class="section full-height"> -->
+
+<div class="parallax">
+  <!-- <canvas id="canvas" style="    right: -27px;
+  width: 205px;
+  position: absolute;
+  top: 96px;">
+  </canvas>  -->
+  <div id="partlyCloudy" class="centered_ positioning_">
+    <div class="sun_">
+        <i class="fas fa-sun" style="font-size: 150px; color: #fecc516e;"></i>
+    </div>
+    <div class="cloud1_ cloud_">
+        <div class="cloudsway1">
+            <i class="fas fa-cloud" style="font-size: 7.5rem; color: #e7e9ea;"></i>
+        </div>
+    </div>
+    <div class="cloud2_ cloud_">
+        <div class="cloudsway2">
+            <i class="fas fa-cloud" style="font-size: 7.5rem; color: #e7e9ea;"></i>
+        </div>
+    </div>
+</div>  
+  <div class="absolute-center">
+    <div class="section">
+      <div class="container">
+        <div class="row" >
+          <div class="col-12">
+            <h1 style=" color: #483e55;font-family: 'Raleway', sans-serif; font-weight: 400;">
+              <span>W</span><span>e</span><span>a</span><span>t</span><span>h</span><span>e</span><span>r</span><span>&nbsp;</span><span>D</span><span>e</span><span>e</span><span>t</span><span>s</span>
+            </h1>
+            <h1 style="    font-size: 20px;
+              color: #33224b;
+              font-weight: 500;">
+              <span>@</span><span>t</span><span>e</span><span>c</span><span>h</span><span>g</span><span>e</span><span>e</span><span>k</span><span>1</span><span>9</span>
+
+            </h1>
+
+            <!-- See the face you light up with Shopping -->
+            <!-- For a hard-earned thirst, Shopping -->
+            <!-- Let Your fingers do the walking through the oniomaniac -->
+            <p style="font-family: 'Architects Daughter', cursive;
+            font-family: 'Caveat', cursive;
+            font-family: 'Indie Flower', cursive; font-size: 23px; font-weight: 600;
+            border-bottom: 2px #6c757d;" class="text-muted">You never judge a day by the WEATHER. It's a BEAUTIFUL DAY! </br>Don't let it get away.
+            </p>
+            <!-- <p>Change Theme</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+
+<!-- ==============================CarD Start================================ -->
+<div class="container">
+  <form class="cool-b4-form" action="/" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" id="name" style="     border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;height: 45px;">
+          <label for="name">Add City Here!</label>
+          <!-- <span class="input-highlight"></span> -->
+          <div class="form-group-append">
+            <button class="btn btn-dark" type="submit" style="border-top-right-radius: 20px;border-bottom-right-radius: 20px; height: 45px;
+              width: 100px;">
+              <i class="fas fa-map-marked-alt" style="font-size: 22px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+  </form>
+  {% if message %}
+  <!-- <div class="col-8"> -->
+                            <div class="alert {{message_class}} alert-dismissible fade show mx-3 mt-3" id='tempAlert' role="alert">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                              <strong>{{ message }}</strong>
+                            </div>
+                            {% endif %}
+                          </div>
+                       
+<!-- </div> -->
+
+
+
+<!-- ==============================CarD End================================ -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+  integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<div class="container-fluid">
+  <div class="row">
+    {% for city_weather in weather_data %}
+
+    <div class="col md-4 ">
+      <div class="frame">
+        <div class="temperature" style="    font-size: 48px;
+    margin-top: 30px;
+    position: absolute;
+    margin-left: 17px;
+    font-family: Poiret One;
+    font-weight: bold;
+    z-index: 100;">
+          {{ city_weather.temperature }}° C
+        </div>
+        <div class="wicon" style="    position: absolute;
+    left: 13px;
+    top: 90px;;
+">
+          <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+        </div>
+        <div class="moon">
+
+
+          <div class="moon-crater1"></div>
+          <div class="moon-crater2"></div>
+        </div>
+        <div class="hill-bg-1">
+          <div class="desc" style="    top: 4px;
+      position: absolute;
+      /* right: 80px; */
+      left: 76px;
+      font-size: 25px;
+      color: antiquewhite; font-family: Poiret One;">
+            {{ city_weather.description|upper }}
+          </div>
+          <div class="city_name" style="    top: 32px;
+    position: absolute;
+    /* right: 80px; */
+    left: 76px;
+    font-size: 19px;
+    color: antiquewhite;font-family: Poiret One;
+">
+            {{ city_weather.city|title }}
+          </div>
+
+        </div>
+        <div class="hill-bg-2"></div>
+        <div class="hill-fg-1"></div>
+        <div class="hill-fg-2"></div>
+        <div class="hill-fg-3"></div>
+
+        <div class="front">
+          <div>
+
+            <!-- <div class="icons">
+              <i class="fas fa-wind"></i><br /><i class="fas fa-tint"></i>
+            </div> -->
+            <div>
+              <div class="info">
+                MIN TEMP    <br> MAX TEMP   <br> FEELS LIKE
+              </div>
+              <table class="preview">
+                <tbody>
+                  <tr>
+                    <td>{{ city_weather.mintemp }}° C</td>
+                  <td>  <i class="fas fa-temperature-low"></i></td>
+                    <!-- <td>21° | 9°</td> -->
+                  </tr>
+                  <tr>
+                    <td>{{ city_weather.maxtemp }}° C</td>
+                    <td>  <i class="fas fa-temperature-high"></i></td>
+                    
+                  </tr>
+                  <tr>
+                  
+                 <td> {{ city_weather.feeltemp|floatformat:"0" }}° C </td>
+ <td>                <i class="far fa-frown-open"></i></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="proverb">
+            
+          <div class="row" style="font-size: 12px; margin-left: 0px; margin-right: 0px; padding-top: 3px; font-weight: 600;">
+              <div class="col">
+                HUMIDITY <i class="fas fa-tint"></i>
+              </div>
+              <div class="col">
+                PRESSURE <i class="fas fa-tachometer-alt"></i>
+              </div>
+              <div class="col">
+                WIND <i class="fas fa-wind"></i>
+              </div>
+          </div>
+          <div class="row" style="font-size: 15px; margin-left: 0px; margin-right: 0px; font-weight: 600;" >
+            <div class="col">
+              {{ city_weather.humidity }} %
+            </div>
+            <div class="col">
+              {{ city_weather.pressure }} mbar 
+            </div>
+            <div class="col">
+              {{ city_weather.windspeed }}km/hr 
+            </div>
+          </div>
+          
+          </div>
+        </div>
+        <!-- <div class="drop-big-1"></div>
+    <div class="drop-big-2"></div>
+    <div class="drop-big-3"></div>
+    <div class="drop-big-4"></div>
+    <div class="drop-big-5"></div>
+    <div class="drop-big-6"></div>
+    <div class="drop-big-7"></div>
+    <div class="drop-big-8"></div>
+    <div class="drop-big-9"></div>
+    <div class="drop-big-10"></div>
+    <div class="drop-medium-1"></div>
+    <div class="drop-medium-2"></div>
+    <div class="drop-medium-3"></div>
+    <div class="drop-medium-4"></div>
+    <div class="drop-medium-5"></div>
+    <div class="drop-medium-6"></div>
+    <div class="drop-medium-7"></div>
+    <div class="drop-medium-8"></div>
+    <div class="drop-medium-9"></div>
+    <div class="drop-medium-10"></div> -->
+        <div class="drop-small-1"></div>
+        <div class="drop-small-2"></div>
+        <div class="drop-small-3"></div>
+        <div class="drop-small-4"></div>
+        <div class="drop-small-5"></div>
+        <!-- <div class="drop-small-6"></div>
+    <div class="drop-small-7"></div>
+    <div class="drop-small-8"></div>
+    <div class="drop-small-9"></div>
+    <div class="drop-small-10"></div> -->
+
+<a href="{% url 'delete_city' city_weather.city %}">
+<i class="fas fa-times-circle" data-toggle="tooltip" data-placement="bottom" title="Remove" style="    color: whitesmoke;
+position: absolute;
+right: 5px;
+font-size: 20px;
+top: 7px;"></i>
+</a>
+      </div>
+   
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block CSS %}
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Overlock');
+  @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+  body {
+    background: #643a7a;
+  }
+
+  .frame {
+
+    position: relative;
+    /* top: 50%; */
+    /* left: 50%; */
+    margin-top: 35px;
+    width: 300px;
+    height: 300px;
+    /* margin-top: -200px; */
+    /* margin-left: -200px; */
+    border-radius: 10px;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.6);
+    /* background-image: linear-gradient(to top, #40334f, #2f273c, #272232, #201c29); */
+    color: #4b384c;
+    font-family: 'overlock', Helvetica, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+
+  }
+
+  .close { cursor: pointer; }
+  .moon {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    top: -6px;
+    left: 225px;
+    border-radius: 50px;
+    background-image: linear-gradient(to left top, #b1b1c5, #928fa3, #746f82, #575162, #3c3444);
+    box-shadow: 0 0 3rem rgba(177, 177, 197, 0.2);
+    animation: rise 1s ease-out;
+  }
+
+  .moon:hover {
+    transform: scale(1.2);
+    transition: 3s;
+  }
+
+  .moon-crater1 {
+    position: absolute;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    border: 4px solid rgba(60, 52, 68, 0.1);
+    top: 1rem;
+    left: 0.8rem;
+  }
+
+  .moon-crater2 {
+    position: absolute;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: rgba(60, 52, 68, 0.15);
+    top: 3.4rem;
+    left: 2.8rem;
+  }
+
+
+  .hill-bg-1,
+  .hill-bg-2,
+  .hill-fg-1,
+  .hill-fg-2,
+  .hill-fg-3 {
+    position: absolute;
+    z-index: 2;
+    width: 337px;
+    height: 281px;
+    top: 130px;
+    left: -57px;
+    background: #503760;
+    border-radius: 50%;
+    box-shadow: -0.5rem 0 0.8rem rgba(0, 0, 0, .3);
+  }
+
+  .hill-bg-2 {
+    top: 177px;
+    left: 177px;
+  }
+
+  .hill-fg-1,
+  .hill-fg-2,
+  .hill-fg-3 {
+    background: #695b93;
+    top: 228px;
+    left: -137px;
+  }
+
+  .hill-fg-2 {
+    top: 251px;
+    left: 63px;
+  }
+
+  .hill-fg-3 {
+    top: 218px;
+    left: 292px;
+  }
+
+  .front {
+    position: absolute;
+    z-index: 10;
+    width: 300px;
+    height: 140px;
+    left: 0;
+    bottom: -53px;
+    background: #fff;
+    box-shadow: -1rem 0 1rem rgba(0, 0, 0, .5);
+    animation: slide 1s;
+    transition: 1s ease-in-out;
+    z-index: 1000;
+  }
+
+  .front:hover {
+    bottom: 0;
+  }
+
+  @keyframes slide {
+
+    0%,
+    45% {
+      transform: translateY(90px);
+    }
+
+    to {
+      transform: translateY(0px);
+    }
+  }
+
+  .front .temperature {
+    float: left;
+    margin-left: 20px;
+    font-size: 45px;
+    line-height: 90px;
+  }
+
+  .front .info {
+    float: left;
+    margin-top: 11px;
+    margin-left: 20px;
+    
+    font-size: 1.2rem;
+    line-height: 20px;
+  }
+
+  .icons {
+    position: absolute;
+    top: 2rem;
+    left: 7rem;
+    line-height: 20px;
+  }
+
+  .front .preview {
+    float: right;
+    font-weight: 400;
+    text-align: right;
+    font-size: 1.2rem;
+    line-height: 20px;
+    margin-top: 11px;
+    margin-right: 20px;
+  }
+
+  .front .preview td {
+    padding: 0 3px;
+    text-transform: uppercase;
+  }
+
+  .drop-big-1,
+  .drop-medium-1,
+  .drop-small-1,
+  .drop-medium-2,
+  .drop-small-2,
+  .drop-medium-3,
+  .drop-small-3,
+  .drop-medium-4,
+  .drop-small-4,
+  .drop-medium-5,
+  .drop-small-5,
+  .drop-medium-6,
+  .drop-small-6,
+  .drop-medium-7,
+  .drop-small-7,
+  .drop-medium-8,
+  .drop-small-8,
+  .drop-medium-9,
+  .drop-small-9,
+  .drop-medium-10,
+  .drop-small-10 {
+    position: absolute;
+    z-index: 20;
+    left: 18px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.9s linear 1.04s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-1:before,
+  .drop-medium-1:before,
+  .drop-small-1:before,
+  .drop-medium-2:before,
+  .drop-small-2:before,
+  .drop-medium-3:before,
+  .drop-small-3:before,
+  .drop-medium-4:before,
+  .drop-small-4:before,
+  .drop-medium-5:before,
+  .drop-small-5:before,
+  .drop-medium-6:before,
+  .drop-small-6:before,
+  .drop-medium-7:before,
+  .drop-small-7:before,
+  .drop-medium-8:before,
+  .drop-small-8:before,
+  .drop-medium-9:before,
+  .drop-small-9:before,
+  .drop-medium-10:before,
+  .drop-small-10:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-1:after,
+  .drop-medium-1:after,
+  .drop-small-1:after,
+  .drop-medium-2:after,
+  .drop-small-2:after,
+  .drop-medium-3:after,
+  .drop-small-3:after,
+  .drop-medium-4:after,
+  .drop-small-4:after,
+  .drop-medium-5:after,
+  .drop-small-5:after,
+  .drop-medium-6:after,
+  .drop-small-6:after,
+  .drop-medium-7:after,
+  .drop-small-7:after,
+  .drop-medium-8:after,
+  .drop-small-8:after,
+  .drop-medium-9:after,
+  .drop-small-9:after,
+  .drop-medium-10:after,
+  .drop-small-10:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-1 {
+    left: 18px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.5s linear 0.96s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-1:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-1:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-1 {
+    left: 18px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2s linear 0.6s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-1:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-1:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-2 {
+    position: absolute;
+    z-index: 20;
+    left: 56px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.8s linear 0.72s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-2:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-2:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-2 {
+    left: 56px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 0.12s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-2:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-2:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-2 {
+    left: 56px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2.1s linear 0.32s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-2:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-2:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-3 {
+    position: absolute;
+    z-index: 20;
+    left: 94px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.8s linear 0.36s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-3:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-3:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-3 {
+    left: 94px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 1.68s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-3:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-3:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-3 {
+    left: 94px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2.1s linear 1.44s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-3:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-3:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-4 {
+    position: absolute;
+    z-index: 20;
+    left: 132px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.9s linear 0.76s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-4:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-4:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-4 {
+    left: 132px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.5s linear 1.36s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-4:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-4:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-4 {
+    left: 132px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2s linear 0.6s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-4:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-4:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-5 {
+    position: absolute;
+    z-index: 20;
+    left: 170px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.8s linear 1.32s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-5:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-5:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-5 {
+    left: 170px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.5s linear 1.12s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-5:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-5:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-5 {
+    left: 170px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2s linear 0.44s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-5:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-5:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-6 {
+    position: absolute;
+    z-index: 20;
+    left: 208px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.8s linear 0.68s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-6:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-6:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-6 {
+    left: 208px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.5s linear 0.2s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-6:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-6:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-6 {
+    left: 208px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2.1s linear 1.08s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-6:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-6:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-7 {
+    position: absolute;
+    z-index: 20;
+    left: 246px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.9s linear 1.8s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-7:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-7:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-7 {
+    left: 246px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 0.72s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-7:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-7:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-7 {
+    left: 246px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2s linear 1.64s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-7:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-7:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-8 {
+    position: absolute;
+    z-index: 20;
+    left: 284px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.8s linear 0.72s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-8:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-8:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-8 {
+    left: 284px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 0.32s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-8:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-8:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-8 {
+    left: 284px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2.1s linear 1.36s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-8:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-8:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-9 {
+    position: absolute;
+    z-index: 20;
+    left: 322px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.9s linear 0.44s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-9:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-9:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-9 {
+    left: 322px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 1.6s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-9:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-9:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-9 {
+    left: 322px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2.1s linear 0.96s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-9:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-9:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  .drop-big-10 {
+    position: absolute;
+    z-index: 20;
+    left: 360px;
+    bottom: 90px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7fc1f9;
+    animation: drop 0.9s linear 0.76s infinite;
+    animation-fill-mode: both;
+    transform-origin: 50% 100%;
+  }
+
+  .drop-big-10:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -2px;
+    left: 1px;
+    width: 6px;
+    height: 6px;
+    background: #7fc1f9;
+    border-radius: 3px;
+  }
+
+  .drop-big-10:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -5px;
+    left: 2px;
+    width: 4px;
+    height: 10px;
+    background: #7fc1f9;
+    border-radius: 50%;
+  }
+
+  .drop-medium-10 {
+    left: 360px;
+    opacity: 0.6;
+    width: 6px;
+    height: 6px;
+    animation: drop 1.4s linear 0.68s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-medium-10:before {
+    top: -2px;
+    left: 1px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .drop-medium-10:after {
+    top: -4px;
+    left: 2px;
+    width: 2px;
+    height: 6px;
+  }
+
+  .drop-small-10 {
+    left: 360px;
+    opacity: 0.3;
+    width: 4px;
+    height: 4px;
+    animation: drop 2s linear 1.28s infinite;
+    animation-fill-mode: both;
+  }
+
+  .drop-small-10:before {
+    top: -2px;
+    left: 1px;
+    width: 2px;
+    height: 2px;
+  }
+
+  .drop-small-10:after {
+    top: -3px;
+    left: 1px;
+    width: 2px;
+    height: 4px;
+  }
+
+  @keyframes drop {
+    0% {
+      transform: translate3d(40px, -320px, 0) scaleX(1) scaleY(1) rotate(17deg);
+    }
+
+    85% {
+      transform: translate3d(0, 0, 0) scaleX(1) scaleY(1) rotate(17deg);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0) scaleX(3) scaleY(0) rotate(0deg);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translate(-40px, 20px);
+    }
+
+    to {
+      transform: translate(0, 0px);
+    }
+  }
+
+  .proverb {
+    font-size: 1.3rem;
+    position: absolute;
+    top: 60%;
+    left: 0%;
+    text-align: center;
+    width: 100%;
+    /* padding: 0.5rem 0; */
+    background: #d1baca;
+    height: 100%;
+  }
+
+
+
+  .wrap {
+    background: linear-gradient(to bottom, #f6f6f6, #e9e9e9);
+    height: 100vh;
+  }
+
+  .cool-b4-form .btn {
+    border-radius: 0;
+  }
+
+  .cool-b4-form .form-group {
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 0;
+    display: flex;
+    /* If there's only 1 input make it full height */
+  }
+
+  .cool-b4-form .form-group:first-child:last-child {
+    height: 100%;
+  }
+
+  .cool-b4-form .form-group:first-child:last-child .form-control {
+    height: 100%;
+  }
+
+  .cool-b4-form .form-group textarea {
+    resize: none;
+  }
+
+  .cool-b4-form .form-group .input-highlight {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: #0a324e;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    transition: width 0.4s ease;
+  }
+
+  .cool-b4-form .form-group label {
+    position: absolute;
+    left: 20px;
+    text-align: center;
+    top: 30px;
+    color: lightslategrey;
+    transition: all 0.4s ease;
+  }
+
+  .cool-b4-form .form-group .form-control {
+    border-radius: 0;
+    border-width: 0 0 2px 0;
+  }
+
+  .cool-b4-form .form-group .form-control:focus,
+  .cool-b4-form .form-group .form-control.hasValue {
+    box-shadow: none;
+    border-color: #ced4da;
+  }
+
+  .cool-b4-form .form-group .form-control:focus~.input-highlight,
+  .cool-b4-form .form-group .form-control.hasValue~.input-highlight {
+    width: 97%;
+    margin-left: 15px;
+  }
+
+  .cool-b4-form .form-group .form-control:focus~label,
+  .cool-b4-form .form-group .form-control.hasValue~label {
+    transform: scale(0.7);
+    top: -7px;
+    font-size: 20px;
+    left: -4px;
+    font-weight: 600;
+    color: whitesmoke;
+  }
+
+  .CH {
+    margin-top: 40px;
+    color: #343a40;
+    font-family: 'Architects Daughter', cursive;
+    font-weight: 600;
+  }
+
+  body.dark h4 {
+    color: white;
+  }
+
+  .parallax {
+    /* The image used */
+    background-image: url("/static/main/2.jpg");
+
+    /* Set a specific height */
+    height: 500px;
+    margin-bottom: 40px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* filter: blur(4px);
+  -webkit-filter: blur(4px); */
+  }
+
+
+  .stretch-card>.card {
+    width: 100%;
+    min-width: 100%
+  }
+
+  body {
+    background-color: #f9f9fa
+  }
+
+  .flex {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto
+  }
+
+  @media (max-width:991.98px) {
+    .padding {
+      padding: 1.5rem
+    }
+  }
+
+  @media (max-width:767.98px) {
+    .padding {
+      padding: 1rem
+    }
+  }
+
+  .padding {
+    padding: 3rem
+  }
+
+  .card-title {
+    margin-bottom: 0px;
+  }
+
+  .card {
+    background-color: rgba(280, 280, 245, -0.6);
+    border-style: none;
+  }
+
+  .check_icon {
+    color: #1e7e34;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-left: 150px;
+  }
+
+  .fa-trash-alt {
+    font-size: 22px;
+    cursor: pointer;
+    color: crimson;
+  }
+
+  body.dark .card-title {
+    color: white;
+  }
+
+
+  /* i {
+    font-size: 12.5rem;
+} */
+
+.positioning_ {
+    position: absolute;
+    width: 12.5rem;
+    height: 12.5rem;
+    margin-top: -6.25rem;
+    margin-left: -6.25rem;
+}
+
+.centered_ {
+    top: 50%;
+    left: 54%;
+}
+/*
+.ul {
+    top: 20%;
+    left: 20%;
+}
+.ur {
+    top: 20%;
+    left: 80%;
+}
+.um {
+    top: 10%;
+    left: 50%;
+}
+.ml {
+    top: 50%;
+    left: 10%;
+}
+.mr {
+    top: 50%;
+    left: 90%;
+}
+.ll {
+    top: 80%;
+    left: 20%;
+}
+.lr {
+    top: 80%;
+    left: 80%;
+}
+.lm {
+    top: 90%;
+    left: 50%;
+} */
+
+.sun_ {
+    color: lightyellow;
+    animation: spin 30s 0s linear infinite forwards;
+}
+#sun{
+    top:78%;
+           right: 180px;
+}
+#cloud1{
+    top:83%;
+}
+#cloud2{
+    top: 150%;
+}
+/* .moon {
+    color: #f1f1f1;
+    animation: rock 12s 0s linear infinite forwards;
+} */
+
+/* .percipitation {
+    position: absolute;
+    width: 9.5rem;
+    height: 5rem;
+    top: 100%;
+    margin-top: -2.5rem;
+    margin-left: -4.75rem;
+    overflow: hidden;
+    border-radius: 0 0 40% 40%;
+}
+.rain {
+    transform: skewX(-5deg);
+    left: 49%;
+}
+.snow {
+    left: 50%;
+}
+
+.percipCol {
+    position: absolute;
+    width: 1rem;
+    height: 5rem;
+    margin-left: -0.5rem;
+}
+
+.drop, .drop:before, .drop:after {
+    position: absolute;
+    background: lightsteelblue;
+    width: 1rem;
+    margin-left: -0.5rem;
+    left: 50%;
+}
+.drop {
+    height: 3rem;
+    margin-top: -2rem;
+    top: 50%;
+    animation: fall 2s 0s linear infinite forwards;
+}
+.drop:before, .drop:after {
+    content:"";
+    height: 1rem;
+    border-radius: 50%;
+}
+.drop:before {
+    margin-top: -0.5rem;
+    top: 0;
+}
+.drop:after {
+    margin-bottom: -0.5rem;
+    bottom: 0;
+}
+
+.flake {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: white;
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    animation: fall 2s 0s linear infinite forwards;
+}
+
+.lightning {
+    color: lightyellow;
+    position: absolute;
+    width: 2rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    margin-left: -1rem;
+    top: 90%;
+    animation: flash 3s 0s linear infinite forwards;
+} */
+
+.cloud_ {
+    position: absolute;
+    width: 10rem;
+    height: 7.5rem;
+    margin-left: -5rem;
+    margin-top: -3.75rem;
+    color: grey;
+    animation: bob 5s 0s linear infinite forwards;
+}
+.cloud1_ {
+    top: 75%;
+    left: 25%;
+}
+.cloud2_ {
+    top: 55%;
+    left: 85%;
+}
+.cloudsway1 {
+    animation: sway 15s 0s linear infinite forwards;
+}
+.cloudsway2 {
+    animation: reversesway 15s 0s linear infinite forwards;
+}
+
+@keyframes spin {
+    0% {
+        transform:rotate(0deg); 
+    }
+    100% {
+        transform:rotate(360deg); 
+    }
+}
+@keyframes rock {
+    0% {
+        transform:rotate(0deg); 
+    }
+    50% {
+        transform:rotate(-15deg); 
+    }
+    100% {
+        transform:rotate(0deg); 
+    }
+}
+@keyframes fall {
+    0% {
+        transform:translateY(0rem);
+    }
+    100% {
+        transform:translateY(5rem);
+    }
+}
+@keyframes bob {
+    0% {
+        transform:translateY(0rem);
+    }
+    25% {
+        transform:translateY(0.5rem);
+    }
+    50% {
+        transform:translateY(0rem);
+    }
+    75% {
+        transform:translateY(-0.5rem);
+    }
+    100% {
+        transform:translateY(0rem);
+    }
+}
+@keyframes reversebob {
+    0% {
+        transform:translateY(0rem);
+    }
+    25% {
+        transform:translateY(-0.5rem);
+    }
+    50% {
+        transform:translateY(0rem);
+    }
+    75% {
+        transform:translateY(0.5rem);
+    }
+    100% {
+        transform:translateY(0rem);
+    }
+}
+@keyframes sway {
+    0% {
+        transform:translateX(0rem);
+    }
+    25% {
+        transform:translateX(0.5rem);
+    }
+    50% {
+        transform:translateX(0rem);
+    }
+    75% {
+        transform:translateX(-0.5rem);
+    }
+    100% {
+        transform:translateX(0rem);
+    }
+}
+@keyframes reversesway {
+    0% {
+        transform:translateX(0rem);
+    }
+    25% {
+        transform:translateX(-0.5rem);
+    }
+    50% {
+        transform:translateX(0rem);
+    }
+    75% {
+        transform:translateX(0.5rem);
+    }
+    100% {
+        transform:translateX(0rem);
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.7;
+    }
+    70% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+</style>
+
+{% endblock %}
+
+{% block JS %}
+<script>
+  (function ($) {
+    "use strict"; // Start of use strict
+
+    // Detect when form-control inputs are not empty
+    $(".cool-b4-form .form-control").on("input", function () {
+      if ($(this).val()) {
+        $(this).addClass("hasValue");
+      } else {
+        $(this).removeClass("hasValue");
+      }
+    });
+  })(jQuery); // End of use strict
+
+
+// var canvas = document.getElementById("canvas");
+// var ctx = canvas.getContext("2d");
+// var radius = canvas.height / 2;
+// ctx.translate(radius, radius);
+// radius = radius * 0.90
+// setInterval(drawClock, 1000);
+
+// function drawClock() {
+//   drawFace(ctx, radius);
+//   drawNumbers(ctx, radius);
+//   drawTime(ctx, radius);
+// }
+
+// function drawFace(ctx, radius) {
+//   var grad;
+//   ctx.beginPath();
+//   ctx.arc(0, 0, radius, 0, 2*Math.PI);
+//   ctx.fillStyle = 'white';
+//   ctx.fill();
+//   grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+//   grad.addColorStop(0, '#333');
+//   grad.addColorStop(0.5, 'white');
+//   grad.addColorStop(1, '#333');
+//   ctx.strokeStyle = grad;
+//   ctx.lineWidth = radius*0.1;
+//   ctx.stroke();
+//   ctx.beginPath();
+//   ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+//   ctx.fillStyle = '#333';
+//   ctx.fill();
+// }
+
+// function drawNumbers(ctx, radius) {
+//   var ang;
+//   var num;
+//   ctx.font = radius*0.15 + "px arial";
+//   ctx.textBaseline="middle";
+//   ctx.textAlign="center";
+//   for(num = 1; num < 13; num++){
+//     ang = num * Math.PI / 6;
+//     ctx.rotate(ang);
+//     ctx.translate(0, -radius*0.85);
+//     ctx.rotate(-ang);
+//     ctx.fillText(num.toString(), 0, 0);
+//     ctx.rotate(ang);
+//     ctx.translate(0, radius*0.85);
+//     ctx.rotate(-ang);
+//   }
+// }
+
+// function drawTime(ctx, radius){
+//     var now = new Date();
+//     var hour = now.getHours();
+//     var minute = now.getMinutes();
+//     var second = now.getSeconds();
+//     //hour
+//     hour=hour%12;
+//     hour=(hour*Math.PI/6)+
+//     (minute*Math.PI/(6*60))+
+//     (second*Math.PI/(360*60));
+//     drawHand(ctx, hour, radius*0.5, radius*0.07);
+//     //minute
+//     minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+//     drawHand(ctx, minute, radius*0.8, radius*0.07);
+//     // second
+//     second=(second*Math.PI/30);
+//     drawHand(ctx, second, radius*0.9, radius*0.02);
+// }
+
+// function drawHand(ctx, pos, length, width) {
+//     ctx.beginPath();
+//     ctx.lineWidth = width;
+//     ctx.lineCap = "round";
+//     ctx.moveTo(0,0);
+//     ctx.rotate(pos);
+//     ctx.lineTo(0, -length);
+//     ctx.stroke();
+//     ctx.rotate(-pos);
+// }
+$('#redAlert').hide();
+$('#wowAlert').on('closed.bs.alert', function () {
+  console.log('Wow alert closed');
+})
+
+$('#tempAlert').on('closed.bs.alert', function () {
+  console.log('temp alert closed');
+})
+
+window.setTimeout(function() {
+    $("#tempAlert").fadeTo(200, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 3000);
+
+
+window.setTimeout(function() {
+   $( "#redAlert" ).fadeIn(1000).slideDown(1000);
+}, 4000);
+
+
+
+</script>
+
+{% endblock %}

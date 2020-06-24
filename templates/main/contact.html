@@ -1,0 +1,110 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body %} 
+        <div class="row" style="margin-top: 100px;">
+            <div class="col-12">
+            <h1 style="font-family: 'Raleway', sans-serif; font-weight: 400;"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span><span>&nbsp;</span><span>U</span><span>s</span></h1>
+                </div>	
+            </div>		
+      {% if messages %}
+      {% for message in messages %}
+         <script> alert('{{ message }}')</script>
+         {% endfor %} 
+       {% endif %} 
+<section class="resume-section p-4  text-center" id="contact">
+    <div class="my-auto">
+         <ul class="fa-ul mb-4 ml-0">
+        <li id="mail-address">
+<!--               Replace with your email address -->
+            <i class="fas fa-envelope-open mr-2 contact-icons"></i
+            >gmishra.work@gmail.com</a
+          >
+        </li>
+        <li>
+          <i class="fas fa-mobile-alt mr-2 contact-icons"></i> Ask for contact below
+        </li>
+        <li>
+          <i class="fas fa-map-marker-alt mr-2 contact-icons"></i>New Delhi, IN
+        </li>
+      </ul>
+
+      <p>
+        ...or leave your message below and I will be back to you as soon as
+        possible.
+      </p>
+
+      <form
+        class="contact-form d-flex flex-column align-items-center"
+        action="/contact/"
+        method="POST"
+      > {% csrf_token %}
+        <div class="form-group w-75">
+          <input
+            type="name"
+            class="form-control"
+            placeholder="Name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group w-75">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-group w-75">
+          <textarea
+            class="form-control"
+            name="message"
+            type="text"
+            placeholder="Message"
+            rows="7"
+            name="name"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-submit btn-info w-75">Submit</button>
+      </form>
+    </div>
+  </section>
+
+<script
+  defer
+  src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
+  integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP"
+  crossorigin="anonymous"
+></script>
+</body>
+{% endblock %}
+
+{% block CSS %} 
+<style>
+
+#cloud2 {
+    top: 83%;
+}
+#cloud1 {
+    top: 42%;
+}
+#sun {
+    top: 0;
+    right: 180px;
+}
+    .absolute-center {
+    top: 35%;
+}
+</style>
+{% endblock %}
+
+{% block JS %} 
+<script>
+    </script>
+{% endblock %}
