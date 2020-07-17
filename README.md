@@ -1,5 +1,7 @@
 # Weather Deets (Weather Application)
 
+### Built with :heart: and :coffee: by [`Gaurav Mishra`](https://github.com/Techgeek19)
+
 ## Quick Setup
 
 ``` bash
